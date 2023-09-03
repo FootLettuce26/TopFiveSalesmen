@@ -14,7 +14,8 @@ public class driver
         Salesman Scooby = new Salesman("Scooby", 44000);
         
         totalSales = new Salesman[] {Johnny, Abby, Miller, Jacob, Tim, Luke, Litty, Scooby};
-        System.out.println(topFiveSalesman(totalSales));
+        //System.out.println(totalSales.length);
+        //topFiveSalesman(totalSales);
         
     }
     
@@ -25,44 +26,30 @@ public class driver
     {
         Salesman[] topFive = new Salesman[5];
         
-        int countTracker = 0;
-        int current = 1;
-        String tempName;
-        float tempSales;
+        int inOrderCount = 0;
+        Salesman temp;
         
-        for(int i = 0; i < 12; i++)
+        System.out.println("I am right before the while loop");
+        while(inOrderCount < list.length)
         {
-            if(countTracker < 5) //fills the topFive array with the first five elements in the original array
+            System.out.println("I have arrived in while loop.");
+
+            for(int i = 0; i < list.length-1; i++)
             {
-                topFive[countTracker] = list[i];
-                System.out.println(topFive[countTracker].name);
-                countTracker++;
-            } else
-            {
-                for(int j = 0; j < topFive.length; j++) 
+                System.out.println("I have arrived in the for loop");   
+                if(list[i].sales > list[i+1].sales)
                 {
-                    if(topFive[j].sales > topFive[current].sales) /*switches elements if the first is greater 
-                    than the second*/
-                    {
-                        tempSales = topFive[current].sales;
-                        tempName = topFive[current].name;
-                        
-                        System.out.println(topFive[current].name + ": " + topFive[current].sales);
-                        
-                        topFive[current].sales = topFive[j].sales;
-                        topFive[current].name = topFive[j].name;
-                        
-                        topFive[j].sales = tempSales;
-                        topFive[j].name = tempName;
-                    }
-                    current++;
-        
+                    inOrderCount++;
+                    System.out.println(inOrderCount);
+                }
+                else if(list[i].sales < list[i+1].sales) //switches the first and second index if first < second
+                {
+                    temp = list[i];
+                    list[i] = list[i+1];
+                    list[i+1] = temp;
+                    //System.out.println(list[i].sales);
                 }
             }
-            
-            
-            
-        
         }
         return topFive;
     }
