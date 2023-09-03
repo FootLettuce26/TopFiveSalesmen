@@ -4,7 +4,7 @@ public class driver
     {
         Salesman[] totalSales;
     
-        Salesman Johnny = new Salesman("Johnny", 43500);
+        Salesman Johnny = new Salesman("Johnny", 43500); //instances of class
         Salesman Abby = new Salesman("Abby", 50000);
         Salesman Miller = new Salesman("Miller", 41900);
         Salesman Jacob = new Salesman("Jacob", 19500);
@@ -13,9 +13,8 @@ public class driver
         Salesman Litty = new Salesman("Litty", 8000);
         Salesman Scooby = new Salesman("Scooby", 44000);
         
-        totalSales = new Salesman[] {Johnny, Abby, Miller, Jacob, Tim, Luke, Litty, Scooby};
-        //System.out.println(totalSales.length);
-        //topFiveSalesman(totalSales);
+        totalSales = new Salesman[] {Johnny, Abby, Miller, Jacob, Tim, Luke, Litty, Scooby}; //fill the array
+        topFiveSalesman(totalSales); //calling the function
         
     }
     
@@ -24,32 +23,32 @@ public class driver
     
     public static Salesman[] topFiveSalesman(Salesman[] list)
     {
-        Salesman[] topFive = new Salesman[5];
+        Salesman[] topFive = new Salesman[5]; //creating final array
         
         int inOrderCount = 0;
         Salesman temp;
         
-        System.out.println("I am right before the while loop");
-        while(inOrderCount < list.length)
+        while(inOrderCount < list.length-1) //is 7 less than 7?
         {
-            System.out.println("I have arrived in while loop.");
-
+            inOrderCount = 0;
             for(int i = 0; i < list.length-1; i++)
             {
-                System.out.println("I have arrived in the for loop");   
-                if(list[i].sales > list[i+1].sales)
+                if(list[i].sales > list[i+1].sales) //checking to see if the first is greater than second
                 {
                     inOrderCount++;
-                    System.out.println(inOrderCount);
                 }
                 else if(list[i].sales < list[i+1].sales) //switches the first and second index if first < second
                 {
                     temp = list[i];
                     list[i] = list[i+1];
                     list[i+1] = temp;
-                    //System.out.println(list[i].sales);
                 }
             }
+        }
+        for(int i = 0; i < 5; i++) //fill the topFive array with the first five elements
+        {
+            topFive[i] = list[i];
+            System.out.println(topFive[i].name + ": " + topFive[i].sales);
         }
         return topFive;
     }
