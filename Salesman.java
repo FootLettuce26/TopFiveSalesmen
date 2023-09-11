@@ -1,9 +1,11 @@
 public class Salesman
 {
-    public String name;
+    //fields
+    public int name;
     public float sales;
     
-    Salesman(String name, float sales)
+    //constructor
+    Salesman(int name, float sales)
     {
         this.name = name;
         this.sales = sales;

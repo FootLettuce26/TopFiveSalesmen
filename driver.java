@@ -1,19 +1,22 @@
-public class driver
+import java.util.Random;
+public class Driver
 {
     public static void main(String[] args)
     {
-        Salesman[] totalSales;
-    
-        Salesman Johnny = new Salesman("Johnny", 43500); //instances of class
-        Salesman Abby = new Salesman("Abby", 50000);
-        Salesman Miller = new Salesman("Miller", 41900);
-        Salesman Jacob = new Salesman("Jacob", 19500);
-        Salesman Tim = new Salesman("Tim", 90000);
-        Salesman Luke = new Salesman("Luke", 51000);
-        Salesman Litty = new Salesman("Litty", 8000);
-        Salesman Scooby = new Salesman("Scooby", 44000);
+        Salesman[] totalSales; //you can also make instances and directly drop the into the array
+        Random r = new Random();
         
-        totalSales = new Salesman[] {Johnny, Abby, Miller, Jacob, Tim, Luke, Litty, Scooby}; //fill the array
+        //for loop to create salesman based on how many times you want the loop to run
+        int count = 0;
+        totalSales = new Salesman[100];
+        for(int i = 0; i < totalSales.length; i++)
+        {
+            totalSales[i] = new Salesman(count, r.nextInt(200000));
+            System.out.println(i);
+            System.out.println(totalSales[i].sales);
+            count++;
+        }
+         //fill the array
         topFiveSalesman(totalSales); //calling the function
         
     }
@@ -28,7 +31,7 @@ public class driver
         int inOrderCount = 0;
         Salesman temp;
         
-        while(inOrderCount < list.length-1) //is 7 less than 7?
+        while(inOrderCount < list.length-1) //is length < length?; sorting the entire list first
         {
             inOrderCount = 0;
             for(int i = 0; i < list.length-1; i++)
