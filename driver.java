@@ -7,14 +7,10 @@ public class Driver
         Random r = new Random();
         
         //for loop to create salesman based on how many times you want the loop to run
-        int count = 0;
         totalSales = new Salesman[100];
         for(int i = 0; i < totalSales.length; i++)
         {
-            totalSales[i] = new Salesman(count, r.nextInt(200000));
-            System.out.println(i);
-            System.out.println(totalSales[i].sales);
-            count++;
+            totalSales[i] = new Salesman(i, r.nextInt(200000));
         }
          //fill the array
         topFiveSalesman(totalSales); //calling the function
